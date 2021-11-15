@@ -1,5 +1,6 @@
 import React from "react";
 import { ToDoType } from "../ToDoList";
+import "./ToDoItem.scss";
 
 interface Props {
   item: ToDoType;
@@ -18,11 +19,19 @@ const ToDoItem = ({ item, setList, list }: Props) => {
     });
     setList(newList);
   };
-
+  const remove = () => {
+    const newList = list.filter((todo) => todo.id !== item.id);
+    setList(newList);
+  };
   return (
-    <div className="todo-item">
+    <div className={`todo-item ${item.completed ? "completed" : ""}`}>
       <h3 className="todo-title">{item.name}</h3>
-      <input type="checkbox" className="todo-check" onClick={handleCheck} />
+      <div className="todo-controls">
+        <input type="checkbox" className="todo-check" onClick={handleCheck} />
+        <button onClick={remove} className="todo-delete">
+          X
+        </button>
+      </div>
     </div>
   );
 };

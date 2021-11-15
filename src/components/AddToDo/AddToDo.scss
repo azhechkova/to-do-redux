@@ -1,0 +1,16 @@
+.add-todo-form {
+  display: flex;
+  margin-bottom: 30px;
+}
+.add-todo-button {
+  display: block;
+  padding: 10px 20px;
+  background-color: rgb(197, 224, 248);
+  border-color: transparent;
+  border-radius: 0 15px 15px 0;
+}
+.add-todo-input {
+  border-color: transparent;
+  border-radius: 15px 0 0 15px;
+  padding: 0 5px;
+}
