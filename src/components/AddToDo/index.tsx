@@ -1,14 +1,12 @@
 import React, { useState } from "react";
+import { StoreModel } from "../../store/models";
+import { useStoreActions } from "easy-peasy";
 import { ToDoType } from "../ToDoList";
 import "./AddToDo.scss";
 
-interface Props {
-  setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
-}
-
-const AddToDo = ({ setList }: Props) => {
+const AddToDo = () => {
   const [name, setName] = useState("");
-
+  const add = useStoreActions<StoreModel>((actions) => actions.add);
   const newItem: ToDoType = {
     id: Math.floor(Math.random() * 100),
     name,
@@ -22,7 +20,7 @@ const AddToDo = ({ setList }: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name.trim()) {
-      setList((prev) => [...prev, newItem]);
+      add(newItem);
       setName("");
     }
   };
