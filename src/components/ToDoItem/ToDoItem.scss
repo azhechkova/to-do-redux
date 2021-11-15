@@ -1,0 +1,44 @@
+.todo-item {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid rgb(227, 223, 255);
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  &.completed {
+    position: relative;
+    &::after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.632);
+      top: 50%;
+      height: 1px;
+      display: block;
+      left: 0;
+      right: 0;
+    }
+  }
+  .todo-title {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  .todo-controls {
+    display: flex;
+    align-items: center;
+    .todo-delete {
+      background-color: transparent;
+      margin-left: 5px;
+      border-color: transparent;
+      display: block;
+      cursor: pointer;
+      color: rgb(162, 3, 3);
+    }
+  }
+}

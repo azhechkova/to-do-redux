@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ToDoType } from "../ToDoList";
+import "./AddToDo.scss";
+
 interface Props {
   setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
   list: ToDoType[];
@@ -16,15 +18,20 @@ const AddToDo = ({ setList, list }: Props) => {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    setList((prev) => [...prev, newItem]);
+    if (name.trim()) {
+      setList((prev) => [...prev, newItem]);
+      setName("");
+    }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input onInput={handleInput} value={name} />
-      <button type="submit">Add</button>
+    <form onSubmit={handleSubmit} className="add-todo-form">
+      <input onInput={handleInput} value={name} className="add-todo-input" />
+      <button type="submit" className="add-todo-button">
+        Add
+      </button>
     </form>
   );
 };
