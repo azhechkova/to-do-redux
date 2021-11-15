@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import AddToDo from "../AddToDo";
 import ToDoItem from "../ToDoItem";
+import { useStoreState } from "easy-peasy";
 import "./ToDoList.scss";
+import { StoreModel } from "../../store/models";
 
 export type ToDoType = { id: any; name: string; completed: boolean };
 
 const ToDoList = () => {
-  const [list, setList] = useState<ToDoType[]>([]);
+  const todoList = useStoreState<StoreModel>((state) => state.todoList);
   return (
     <div className="todo-list">
       <div className="container">
-        <AddToDo setList={setList} list={list} />
+        <AddToDo />
 
-        {list.map((item) => (
-          <ToDoItem list={list} setList={setList} item={item} key={item.id} />
+        {todoList.map((item: any) => (
+          <ToDoItem item={item} key={item.id} />
         ))}
       </div>
     </div>
