@@ -1,34 +1,25 @@
-import React from "react";
+import { useContext } from "react";
+import { ITodoContext, TodoContext } from "../../context/context";
 import { ToDoType } from "../ToDoList";
 import "./ToDoItem.scss";
 
 interface Props {
   item: ToDoType;
-  setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
-  list: ToDoType[];
 }
 
-const ToDoItem = ({ item, setList, list }: Props) => {
-  const handleCheck = () => {
-    const newList = list.map((todo) => {
-      if (todo.id === item.id) {
-        item.completed = !item.completed;
-        return item;
-      }
-      return todo;
-    });
-    setList(newList);
-  };
-  const remove = () => {
-    const newList = list.filter((todo) => todo.id !== item.id);
-    setList(newList);
-  };
+const ToDoItem = ({ item }: Props) => {
+  const { deleteItem, check } = useContext<ITodoContext>(TodoContext);
+
   return (
     <div className={`todo-item ${item.completed ? "completed" : ""}`}>
       <h3 className="todo-title">{item.name}</h3>
       <div className="todo-controls">
-        <input type="checkbox" className="todo-check" onClick={handleCheck} />
-        <button onClick={remove} className="todo-delete">
+        <input
+          type="checkbox"
+          className="todo-check"
+          onClick={() => check!(item.id)}
+        />
+        <button onClick={() => deleteItem!(item.id)} className="todo-delete">
           X
         </button>
       </div>

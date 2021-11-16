@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useContext } from "react";
+import { ITodoContext, TodoContext } from "../../context/context";
 import AddToDo from "../AddToDo";
 import ToDoItem from "../ToDoItem";
 import "./ToDoList.scss";
@@ -6,14 +7,14 @@ import "./ToDoList.scss";
 export type ToDoType = { id: any; name: string; completed: boolean };
 
 const ToDoList = () => {
-  const [list, setList] = useState<ToDoType[]>([]);
+  const { list } = useContext<ITodoContext>(TodoContext);
+
   return (
     <div className="todo-list">
       <div className="container">
-        <AddToDo setList={setList} list={list} />
-
+        <AddToDo />
         {list.map((item) => (
-          <ToDoItem list={list} setList={setList} item={item} key={item.id} />
+          <ToDoItem item={item} key={item.id} />
         ))}
       </div>
     </div>
