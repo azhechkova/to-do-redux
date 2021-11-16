@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ITodoContext, TodoContext } from "../../context/context";
 import { ToDoType } from "../ToDoList";
 import "./AddToDo.scss";
 
-interface Props {
-  setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
-}
-
-const AddToDo = ({ setList }: Props) => {
+const AddToDo = () => {
   const [name, setName] = useState("");
+  const { addItem } = useContext<ITodoContext>(TodoContext);
 
   const newItem: ToDoType = {
     id: Math.floor(Math.random() * 100),
@@ -22,7 +20,7 @@ const AddToDo = ({ setList }: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name.trim()) {
-      setList((prev) => [...prev, newItem]);
+      addItem!(newItem);
       setName("");
     }
   };
