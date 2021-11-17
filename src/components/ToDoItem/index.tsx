@@ -1,34 +1,28 @@
 import React from "react";
-import { ToDoType } from "../ToDoList";
+import { useDispatch } from "react-redux";
+import { deleteItem, check } from "../../store/actions";
 import "./ToDoItem.scss";
 
 interface Props {
-  item: ToDoType;
-  setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
-  list: ToDoType[];
+  item: { id: any; name?: string; completed?: boolean };
 }
 
-const ToDoItem = ({ item, setList, list }: Props) => {
-  const handleCheck = () => {
-    const newList = list.map((todo) => {
-      if (todo.id === item.id) {
-        item.completed = !item.completed;
-        return item;
-      }
-      return todo;
-    });
-    setList(newList);
-  };
-  const remove = () => {
-    const newList = list.filter((todo) => todo.id !== item.id);
-    setList(newList);
-  };
+const ToDoItem = ({ item }: Props) => {
+  const dispath = useDispatch();
+
   return (
     <div className={`todo-item ${item.completed ? "completed" : ""}`}>
       <h3 className="todo-title">{item.name}</h3>
       <div className="todo-controls">
-        <input type="checkbox" className="todo-check" onClick={handleCheck} />
-        <button onClick={remove} className="todo-delete">
+        <input
+          type="checkbox"
+          className="todo-check"
+          onChange={() => dispath(check(item.id))}
+        />
+        <button
+          onClick={() => dispath(deleteItem(item.id))}
+          className="todo-delete"
+        >
           X
         </button>
       </div>

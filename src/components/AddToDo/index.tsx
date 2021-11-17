@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { ToDoType } from "../ToDoList";
 import "./AddToDo.scss";
+import { addItem, ToDoType } from "../../store/actions";
 
-interface Props {
-  setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
-  list: ToDoType[];
-}
-const AddToDo = ({ setList, list }: Props) => {
+import { useDispatch } from "react-redux";
+
+const AddToDo = () => {
   const [name, setName] = useState("");
+  const dispath = useDispatch();
 
   const newItem: ToDoType = {
     id: Math.floor(Math.random() * 100),
@@ -22,7 +21,7 @@ const AddToDo = ({ setList, list }: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name.trim()) {
-      setList((prev) => [...prev, newItem]);
+      dispath(addItem(newItem));
       setName("");
     }
   };
