@@ -7,10 +7,11 @@ export type ToDoType = { id: any; name: string; completed: boolean };
 
 const ToDoList = () => {
   const [list, setList] = useState<ToDoType[]>([]);
+
   return (
     <div className="todo-list">
       <div className="container">
-        <AddToDo setList={setList} list={list} />
+        <AddToDo setList={setList} />
 
         {list.map((item) => (
           <ToDoItem list={list} setList={setList} item={item} key={item.id} />

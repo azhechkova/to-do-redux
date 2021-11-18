@@ -4,9 +4,9 @@ import "./AddToDo.scss";
 
 interface Props {
   setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
-  list: ToDoType[];
 }
-const AddToDo = ({ setList, list }: Props) => {
+
+const AddToDo = ({ setList }: Props) => {
   const [name, setName] = useState("");
 
   const newItem: ToDoType = {
@@ -26,6 +26,7 @@ const AddToDo = ({ setList, list }: Props) => {
       setName("");
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="add-todo-form">
       <input onInput={handleInput} value={name} className="add-todo-input" />

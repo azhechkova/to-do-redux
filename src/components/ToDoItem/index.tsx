@@ -23,6 +23,7 @@ const ToDoItem = ({ item, setList, list }: Props) => {
     const newList = list.filter((todo) => todo.id !== item.id);
     setList(newList);
   };
+
   return (
     <div className={`todo-item ${item.completed ? "completed" : ""}`}>
       <h3 className="todo-title">{item.name}</h3>
