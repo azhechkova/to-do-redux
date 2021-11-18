@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { StoreModel } from "../../store/models";
+import { StoreModel, ToDoType } from "../../store/models";
 import { useStoreActions } from "easy-peasy";
-import { ToDoType } from "../ToDoList";
 import "./AddToDo.scss";
 
 const AddToDo = () => {
@@ -24,6 +23,7 @@ const AddToDo = () => {
       setName("");
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="add-todo-form">
       <input onInput={handleInput} value={name} className="add-todo-input" />
