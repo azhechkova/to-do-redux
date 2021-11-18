@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ToDoType } from "../actions";
+export type ToDoType = { id: any; name: string; completed: boolean };
 
 export const initialState = [] as ToDoType[];
 
 const todoSlice = createSlice({
   name: "todoList",
   initialState,
+
   reducers: {
     addTodo: {
       reducer: (state, action: PayloadAction<ToDoType>) => {
@@ -17,15 +18,17 @@ const todoSlice = createSlice({
         };
       },
     },
+
     removeTodo: {
       reducer: (state, action: PayloadAction<number>) => {
         const newState = state.filter((todo) => todo.id !== action.payload);
-        state = newState;
+        return (state = newState);
       },
       prepare: (id: number) => {
         return { payload: id };
       },
     },
+
     check: {
       reducer: (state, action: PayloadAction<number>) => {
         const newState = state.map((todo) => {
@@ -43,7 +46,9 @@ const todoSlice = createSlice({
     },
   },
 });
+
 const { actions, reducer } = todoSlice;
-export type RootState = ReturnType<typeof reducer>;
+
 export const { check, removeTodo, addTodo } = actions;
+export type RootState = ReturnType<typeof reducer>;
 export default reducer;
