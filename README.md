@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+### `yarn`
+
 ### `yarn start`
 
 ### `yarn build`
@@ -12,10 +14,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Branch `main` - simple React todo
 
-### Branch `easy-peasy` - todo app using easy-peasy library
+### Branch `easy-peasy`
 
-### Branch `redux` - todo app using redux library
+### Branch `redux`
 
-### Branch `react-context` - todo app using react-context library
+### Branch `react-context`
 
-### Branch `react-toolkit` - todo app using react-toolkit library
+### Branch `react-toolkit`
