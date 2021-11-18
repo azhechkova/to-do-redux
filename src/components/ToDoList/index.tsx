@@ -4,8 +4,6 @@ import AddToDo from "../AddToDo";
 import ToDoItem from "../ToDoItem";
 import "./ToDoList.scss";
 
-export type ToDoType = { id: number; name: string; completed: boolean };
-
 const ToDoList = () => {
   const { list } = useContext<ITodoContext>(TodoContext);
 

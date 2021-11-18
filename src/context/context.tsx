@@ -1,5 +1,6 @@
 import React, { useState, Dispatch } from "react";
-import { ToDoType } from "../components/ToDoList";
+
+export type ToDoType = { id: any; name: string; completed: boolean };
 
 export interface ITodoContext {
   list: ToDoType[];
