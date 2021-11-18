@@ -1,27 +1,19 @@
 import React from "react";
-import { ToDoType } from "../ToDoList";
+import { useDispatch } from "react-redux";
+import { ToDoType } from "../../store/actions";
 import "./ToDoItem.scss";
-
+import { check, removeTodo } from "../../store/reducers";
 interface Props {
   item: ToDoType;
-  setList: React.Dispatch<React.SetStateAction<ToDoType[]>>;
-  list: ToDoType[];
 }
 
-const ToDoItem = ({ item, setList, list }: Props) => {
+const ToDoItem = ({ item }: Props) => {
+  const dispatch = useDispatch();
   const handleCheck = () => {
-    const newList = list.map((todo) => {
-      if (todo.id === item.id) {
-        item.completed = !item.completed;
-        return item;
-      }
-      return todo;
-    });
-    setList(newList);
+    dispatch(check(item.id));
   };
   const remove = () => {
-    const newList = list.filter((todo) => todo.id !== item.id);
-    setList(newList);
+    dispatch(removeTodo(item.id));
   };
   return (
     <div className={`todo-item ${item.completed ? "completed" : ""}`}>
