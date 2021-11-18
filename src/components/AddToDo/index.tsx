@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ToDoType } from "../../store/actions";
-import { addTodo } from "../../store/reducers";
+import { addTodo, ToDoType } from "../../store/reducers";
 import "./AddToDo.scss";
 
 const AddToDo = () => {

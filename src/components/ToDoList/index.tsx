@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { ToDoType } from "../../store/actions";
+import React from "react";
 import AddToDo from "../AddToDo";
 import ToDoItem from "../ToDoItem";
 import "./ToDoList.scss";
@@ -12,7 +11,6 @@ const ToDoList = () => {
     <div className="todo-list">
       <div className="container">
         <AddToDo />
-
         {todoList.map((item) => (
           <ToDoItem item={item} key={item.id} />
         ))}
