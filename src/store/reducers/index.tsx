@@ -12,6 +12,7 @@ interface CheckType {
   type: "CHECK";
   id: number;
 }
+
 type ActionType = AddType | DeleteType | CheckType;
 export type RootState = ReturnType<typeof reducer>;
 
@@ -19,8 +20,10 @@ const reducer = (state: ToDoType[] = [], action: ActionType) => {
   switch (action.type) {
     case "ADD":
       return [...state, action.item];
+
     case "DELETE":
       return (state = state.filter((todo: ToDoType) => todo.id !== action.id!));
+
     case "CHECK":
       const newState = state.map((item) => {
         if (item.id === action.id) {

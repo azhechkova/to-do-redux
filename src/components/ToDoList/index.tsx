@@ -13,13 +13,12 @@ const ToDoList = () => {
       <div className="container">
         <AddToDo />
 
-        {todoList.map(
-          (item: { id: any; name?: string; completed?: boolean }) => (
-            <ToDoItem item={item} key={item.id} />
-          )
-        )}
+        {todoList.map((item: ToDoType) => (
+          <ToDoItem item={item} key={item.id} />
+        ))}
       </div>
     </div>
   );
 };
+
 export default ToDoList;

@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteItem, check } from "../../store/actions";
+import { deleteItem, check, ToDoType } from "../../store/actions";
 import "./ToDoItem.scss";
 
 interface Props {
-  item: { id: any; name?: string; completed?: boolean };
+  item: ToDoType;
 }
 
 const ToDoItem = ({ item }: Props) => {

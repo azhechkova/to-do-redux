@@ -25,6 +25,7 @@ const AddToDo = () => {
       setName("");
     }
   };
+
   return (
     <form onSubmit={handleSubmit} className="add-todo-form">
       <input onInput={handleInput} value={name} className="add-todo-input" />
