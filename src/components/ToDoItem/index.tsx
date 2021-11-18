@@ -1,8 +1,7 @@
 import React from "react";
-import { ToDoType } from "../ToDoList";
 import { useStoreActions } from "easy-peasy";
 import "./ToDoItem.scss";
-import { StoreModel } from "../../store/models";
+import { StoreModel, ToDoType } from "../../store/models";
 
 interface Props {
   item: ToDoType;
