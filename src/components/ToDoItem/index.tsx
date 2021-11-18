@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { ITodoContext, TodoContext } from "../../context/context";
-import { ToDoType } from "../ToDoList";
+import { ITodoContext, TodoContext, ToDoType } from "../../context/context";
 import "./ToDoItem.scss";
 
 interface Props {
