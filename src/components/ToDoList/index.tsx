@@ -1,20 +1,20 @@
 import React, { useState } from "react";
+import { ToDoType } from "../../store/actions";
 import AddToDo from "../AddToDo";
 import ToDoItem from "../ToDoItem";
 import "./ToDoList.scss";
-
-export type ToDoType = { id: number; name: string; completed: boolean };
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/reducers";
 
 const ToDoList = () => {
-  const [list, setList] = useState<ToDoType[]>([]);
-
+  const todoList = useSelector((state: RootState) => state);
   return (
     <div className="todo-list">
       <div className="container">
-        <AddToDo setList={setList} />
+        <AddToDo />
 
-        {list.map((todo) => (
-          <ToDoItem list={list} setList={setList} item={todo} key={todo.id} />
+        {todoList.map((item) => (
+          <ToDoItem item={item} key={item.id} />
         ))}
       </div>
     </div>
