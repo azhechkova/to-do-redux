@@ -36,4 +36,5 @@ const AddToDo = ({ setList }: Props) => {
     </form>
   );
 };
+
 export default AddToDo;

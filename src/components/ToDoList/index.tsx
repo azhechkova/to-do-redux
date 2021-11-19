@@ -3,7 +3,7 @@ import AddToDo from "../AddToDo";
 import ToDoItem from "../ToDoItem";
 import "./ToDoList.scss";
 
-export type ToDoType = { id: any; name: string; completed: boolean };
+export type ToDoType = { id: number; name: string; completed: boolean };
 
 const ToDoList = () => {
   const [list, setList] = useState<ToDoType[]>([]);
@@ -13,11 +13,12 @@ const ToDoList = () => {
       <div className="container">
         <AddToDo setList={setList} />
 
-        {list.map((item) => (
-          <ToDoItem list={list} setList={setList} item={item} key={item.id} />
+        {list.map((todo) => (
+          <ToDoItem list={list} setList={setList} item={todo} key={todo.id} />
         ))}
       </div>
     </div>
   );
 };
+
 export default ToDoList;

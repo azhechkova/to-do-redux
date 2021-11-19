@@ -12,8 +12,8 @@ const ToDoItem = ({ item, setList, list }: Props) => {
   const handleCheck = () => {
     const newList = list.map((todo) => {
       if (todo.id === item.id) {
-        item.completed = !item.completed;
-        return item;
+        todo.completed = !todo.completed;
+        return todo;
       }
       return todo;
     });
