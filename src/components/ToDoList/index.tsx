@@ -3,7 +3,7 @@ import AddToDo from "../AddToDo";
 import ToDoItem from "../ToDoItem";
 import { useStoreState } from "easy-peasy";
 import "./ToDoList.scss";
-import { StoreModel } from "../../store/models";
+import { StoreModel, ToDoType } from "../../store/models";
 
 const ToDoList = () => {
   const todoList = useStoreState<StoreModel>((state) => state.todoList);
@@ -12,8 +12,8 @@ const ToDoList = () => {
     <div className="todo-list">
       <div className="container">
         <AddToDo />
-        {todoList.map((item: any) => (
-          <ToDoItem item={item} key={item.id} />
+        {todoList.map((todo: ToDoType) => (
+          <ToDoItem item={todo} key={todo.id} />
         ))}
       </div>
     </div>

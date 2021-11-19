@@ -4,29 +4,29 @@ import { useStoreActions } from "easy-peasy";
 import "./AddToDo.scss";
 
 const AddToDo = () => {
-  const [name, setName] = useState("");
+  const [text, setText] = useState("");
   const add = useStoreActions<StoreModel>((actions) => actions.add);
   const newItem: ToDoType = {
     id: Math.floor(Math.random() * 100),
-    name,
+    name: text,
     completed: false,
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    setText(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (name.trim()) {
+    if (text.trim()) {
       add(newItem);
-      setName("");
+      setText("");
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="add-todo-form">
-      <input onInput={handleInput} value={name} className="add-todo-input" />
+      <input onInput={handleInput} value={text} className="add-todo-input" />
       <button type="submit" className="add-todo-button">
         Add
       </button>
