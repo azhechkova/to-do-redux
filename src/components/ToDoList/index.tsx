@@ -12,9 +12,8 @@ const ToDoList = () => {
     <div className="todo-list">
       <div className="container">
         <AddToDo />
-
-        {todoList.map((item: ToDoType) => (
-          <ToDoItem item={item} key={item.id} />
+        {todoList.map((todo: ToDoType) => (
+          <ToDoItem item={todo} key={todo.id} />
         ))}
       </div>
     </div>
